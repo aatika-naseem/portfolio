@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aatika Naseem | Web & App Developer</title>
+    <meta name="description" content="Portfolio of Aatika Naseem, web and app developer." />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { bg: '#0b0a1a', surface: '#14122b', accent: '#8b5cf6', accent2: '#3b82f6', muted: '#9a97b8' },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                }
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #0b0a1a;
+            --surface: #14122b;
+            --accent: #8b5cf6;
+            --accent-2: #3b82f6;
+            --muted: #9a97b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 4rem;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, .35), 0 0 40px rgba(59, 130, 246, .2);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp .8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: .15s;
+        }
+
+        .delay-2 {
+            animation-delay: .3s;
+        }
+
+        .delay-3 {
+            animation-delay: .45s;
+        }
+
+        .delay-4 {
+            animation-delay: .6s;
+        }
+
+        @keyframes slowZoom {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.06);
+            }
+        }
+
+        .hero-img {
+            animation: slowZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cursor {
+            color: var(--accent);
+            animation: blink 1s step-end infinite;
+        }
+
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .js .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .btn {
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .card {
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, .6);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, .2);
+        }
+
+        .chip {
+            padding: .35rem .9rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            border: 1px solid rgba(139, 92, 246, .4);
+            color: #c9b8ff;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .chip:hover {
+            background: rgba(139, 92, 246, .15);
+            transform: translateY(-2px);
+        }
+
+        .field {
+            width: 100%;
+            padding: .85rem 1rem;
+            border-radius: .6rem;
+            color: #fff;
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, .08);
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .field::placeholder {
+            color: var(--muted);
+        }
+
+        .field:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, .25);
+        }
+
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            z-index: 60;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        }
+
+        .nav-link.active {
+            color: #fff;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .fade-up,
+            .js .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-bg text-white font-sans">
+    <div id="progress"></div>
+
+    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur bg-bg/60 border-b border-white/5">
+        <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="text-xl font-bold gradient-text">Aatika</a>
+            <ul class="hidden md:flex gap-8 text-sm text-muted">
+                <li><a href="#home" class="nav-link hover:text-white transition">Home</a></li>
+                <li><a href="#about" class="nav-link hover:text-white transition">About</a></li>
+                <li><a href="#projects" class="nav-link hover:text-white transition">Projects</a></li>
+                <li><a href="#services" class="nav-link hover:text-white transition">Services</a></li>
+                <li><a href="#contact" class="nav-link hover:text-white transition">Contact</a></li>
+            </ul>
+            <button id="menu-btn" class="md:hidden text-2xl" aria-label="Open menu">☰</button>
+        </nav>
+        <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-muted bg-bg/95">
+            <li><a href="#home" class="block">Home</a></li>
+            <li><a href="#about" class="block">About</a></li>
+            <li><a href="#projects" class="block">Projects</a></li>
+            <li><a href="#services" class="block">Services</a></li>
+            <li><a href="#contact" class="block">Contact</a></li>
+        </ul>
+    </header>
+
+    <section id="home" class="relative min-h-screen flex items-end md:items-center overflow-hidden">
+        <img src="images/hero.jpg" alt="Illustration of Aatika coding at her desk"
+            class="hero-img absolute inset-0 w-full h-full object-cover object-[75%_center]" />
+        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-bg via-bg/70 to-transparent"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto w-full px-6 pb-16 md:pb-0 pt-24">
+            <p class="fade-up text-muted mb-3">Hi there, I'm</p>
+            <h1 class="fade-up delay-1 text-5xl md:text-7xl font-bold mb-4">Aatika Naseem</h1>
+            <p class="fade-up delay-2 text-2xl md:text-3xl font-semibold gradient-text max-w-xl mb-3">
+                I build fast, modern websites and apps for businesses.
+            </p>
+            <p class="fade-up delay-3 text-muted mb-8 h-6">
+                <span id="typed"></span><span class="cursor">|</span>
+            </p>
+            <div class="fade-up delay-4 flex flex-wrap gap-4">
+                <a href="#projects" class="btn px-6 py-3 rounded-lg bg-accent glow font-semibold">View my work</a>
+                <a href="#contact"
+                    class="btn px-6 py-3 rounded-lg border border-accent2 text-accent2 hover:bg-accent2/10 font-semibold">Hire
+                    me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="relative py-24 px-6 overflow-hidden">
+        <div class="absolute top-20 -left-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="reveal flex justify-center md:justify-end relative group">
+                <div
+                    class="absolute inset-0 m-auto w-72 md:w-80 h-72 md:h-80 rounded-3xl bg-gradient-to-br from-accent/40 via-accent/10 to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500">
+                </div>
+                <div
+                    class="absolute w-72 md:w-80 h-96 rounded-3xl border-2 border-accent/20 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-500">
+                </div>
+                <img src="images/about.jpg" alt="Illustration of Aatika standing confidently"
+                    class="relative w-72 md:w-80 h-96 rounded-3xl border-2 border-accent/50 glow object-cover group-hover:scale-[1.02] transition-transform duration-500" />
+            </div>
+
+            <div class="reveal">
+                <p
+                    class="inline-flex items-center gap-2 text-accent font-semibold mb-3 text-sm uppercase tracking-wider">
+                    <span class="w-8 h-px bg-accent"></span> Who am I?
+                </p>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    I'm Aatika, a <span class="gradient-text">web and app developer</span>
+                </h2>
+                <p class="text-muted leading-relaxed mb-4 text-lg">
+                    I'm a Software Engineering student at UET Lahore who builds clean,
+                    responsive websites and apps. Before moving into software, I taught
+                    for several years, so I explain things clearly and I'm comfortable
+                    working with clients who aren't technical.
+                </p>
+                <p class="text-muted leading-relaxed mb-8 text-lg">
+                    I work with HTML, CSS, JavaScript, Node.js and MongoDB, and I enjoy
+                    turning rough ideas into something polished that actually works.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span
+                        class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">HTML</span>
+                    <span
+                        class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">CSS</span>
+                    <span
+                        class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">JavaScript</span>
+                    <span
+                        class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">Node.js</span>
+                    <span
+                        class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">MongoDB</span>
+                </div>
+                <a href="#contact"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent hover:bg-accent/90 transition-all duration-300 glow font-semibold group/btn">
+                    Let's work together
+                    <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 bg-surface/40">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal text-center mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">My <span class="gradient-text">projects</span></h2>
+                <p class="text-muted">A few things I've built recently.</p>
+            </div>
+            <div id="project-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal text-center mb-14">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">What I <span class="gradient-text">offer</span></h2>
+                <p class="text-muted">Everything you need to get your idea online.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal card bg-surface rounded-2xl p-6 border border-white/5">
+                    <div class="text-3xl mb-4">🌐</div>
+                    <h3 class="font-semibold mb-2">Website development</h3>
+                    <p class="text-muted text-sm">Fast, responsive business sites and landing pages.</p>
+                </div>
+                <div class="reveal card bg-surface rounded-2xl p-6 border border-white/5">
+                    <div class="text-3xl mb-4">🖥️</div>
+                    <h3 class="font-semibold mb-2">Full-stack web apps</h3>
+                    <p class="text-muted text-sm">Forms, databases, logins and admin panels.</p>
+                </div>
+                <div class="reveal card bg-surface rounded-2xl p-6 border border-white/5">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="font-semibold mb-2">Mobile apps</h3>
+                    <p class="text-muted text-sm">Cross-platform apps built with React Native and Expo.</p>
+                </div>
+                <div class="reveal card bg-surface rounded-2xl p-6 border border-white/5">
+                    <div class="text-3xl mb-4">⚙️</div>
+                    <h3 class="font-semibold mb-2">Automation</h3>
+                    <p class="text-muted text-sm">Connect your tools and automate repetitive work with n8n.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-surface/40">
+        <div class="max-w-2xl mx-auto">
+            <div class="reveal text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-3">Let's <span class="gradient-text">talk</span></h2>
+                <p class="text-muted">Tell me about your project and I'll reply soon.</p>
+            </div>
+            <form id="contact-form" class="reveal space-y-4">
+                <input name="name" required placeholder="Your name" class="field" />
+                <input name="email" type="email" required placeholder="Your email" class="field" />
+                <textarea name="message" required rows="5" placeholder="Your message" class="field"></textarea>
+                <button type="submit" class="btn w-full py-3 rounded-lg bg-accent glow font-semibold">Send
+                    message</button>
+                <p id="form-status" class="text-center text-sm min-h-[1.25rem]" role="status"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-muted text-sm border-t border-white/5">
+        © <span id="year"></span> Aatika Naseem. Built with HTML, Tailwind and Node.js.
+    </footer>
+
+    <script>
+        document.documentElement.classList.add("js");
+
+        /* ---------- Mobile menu ---------- */
+        const menu = document.getElementById("mobile-menu");
+        document.getElementById("menu-btn").addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
+        });
+        menu.querySelectorAll("a").forEach((a) =>
+            a.addEventListener("click", () => {
+                menu.classList.add("hidden");
+                menu.classList.remove("flex");
+            })
+        );
+
+        /* ---------- Typing effect ---------- */
+        const roles = ["Web Developer", "App Developer", "Automation Builder"];
+        const typed = document.getElementById("typed");
+        let roleIndex = 0, charIndex = 0, deleting = false;
+
+        function type() {
+            const word = roles[roleIndex];
+            typed.textContent = word.slice(0, charIndex);
+            if (!deleting && charIndex < word.length) charIndex++;
+            else if (deleting && charIndex > 0) charIndex--;
+            else if (!deleting) { deleting = true; return setTimeout(type, 1400); }
+            else { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+            setTimeout(type, deleting ? 50 : 100);
+        }
+        type();
+
+        /* ---------- Scroll reveal ---------- */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add("visible");
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        function observeReveals(root = document) {
+            root.querySelectorAll(".reveal:not(.visible)").forEach((el, i) => {
+                el.style.transitionDelay = `${(i % 4) * 80}ms`;
+                revealObserver.observe(el);
+            });
+        }
+        observeReveals();
+
+        /* ---------- Projects ---------- */
+        const fallbackProjects = [
+            { title: "ZERO//DAY", description: "A bold, movie-inspired website with a dark theme and several pages.", tech: ["HTML", "Tailwind", "JavaScript"], image: "", live: "#", code: "#" },
+            { title: "Herbarium Website", description: "A five-page site with a working contact form.", tech: ["HTML", "Tailwind", "Formspree"], image: "", live: "#", code: "#" },
+            { title: "To-Do List App", description: "A mobile app built with React Native and Expo, packaged as an APK.", tech: ["React Native", "Expo"], image: "", live: "#", code: "#" },
+        ];
+
+        const grid = document.getElementById("project-grid");
+
+        function renderProjects(list) {
+            grid.innerHTML = list.map((p) => `
+                <article class="reveal card bg-surface rounded-2xl overflow-hidden border border-white/5">
+                    ${p.image
+                    ? `<img src="${p.image}" alt="${p.title} screenshot" class="w-full h-44 object-cover" />`
+                    : `<div class="h-44 flex items-center justify-center text-xl font-bold bg-gradient-to-br from-accent/30 to-accent2/30">${p.title}</div>`}
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2">${p.title}</h3>
+                        <p class="text-muted text-sm mb-4">${p.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-5">${p.tech.map((t) => `<span class="chip">${t}</span>`).join("")}</div>
+                        <div class="flex gap-4 text-sm font-semibold">
+                            <a href="${p.live}" class="text-accent hover:underline">Live demo</a>
+                            <a href="${p.code}" class="text-accent2 hover:underline">Code</a>
+                        </div>
+                    </div>
+                </article>`).join("");
+            observeReveals(grid);
+        }
+
+        renderProjects(fallbackProjects);
+
+        fetch("http://localhost:5000/api/projects")
+            .then((res) => res.json())
+            .then((list) => { if (Array.isArray(list) && list.length) renderProjects(list); })
+            .catch(() => { });
+
+        /* ---------- Scroll progress bar and active link ---------- */
+        const bar = document.getElementById("progress");
+        const sections = [...document.querySelectorAll("section[id]")];
+        const links = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            const max = document.documentElement.scrollHeight - innerHeight;
+            bar.style.width = `${(scrollY / max) * 100}%`;
+
+            const current = sections.filter((s) => s.offsetTop - 120 <= scrollY).pop();
+            links.forEach((l) => l.classList.toggle("active", current && l.hash === `#${current.id}`));
+        });
+
+        /* ---------- Contact form ---------- */
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            status.className = "text-center text-sm text-muted";
+            status.textContent = "Sending...";
+            try {
+                const res = await fetch("http://localhost:5000/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form))),
+                });
+                if (!res.ok) throw new Error();
+                status.className = "text-center text-sm text-green-400";
+                status.textContent = "Thanks! Your message was sent.";
+                form.reset();
+            } catch {
+                status.className = "text-center text-sm text-red-400";
+                status.textContent = "Couldn't send yet. The server isn't connected.";
+            }
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

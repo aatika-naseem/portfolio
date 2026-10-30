@@ -1,0 +1,104 @@
+:root {
+    --bg: #0b0a1a;
+    --surface: #14122b;
+    --accent: #8b5cf6;
+    --accent-2: #3b82f6;
+    --text: #e8e6f5;
+    --muted: #9a97b8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+}
+
+/* Custom classes we use together with Tailwind */
+.bg-bg {
+    background: var(--bg);
+}
+
+.bg-surface {
+    background: var(--surface);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-muted {
+    color: var(--muted);
+}
+
+/* Violet-to-blue gradient for headings and highlights */
+.gradient-text {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Soft neon glow for buttons, cards and the character frame */
+.glow {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.35),
+        0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+/* Text slides up and fades in when the page loads */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.15s;
+}
+
+.delay-2 {
+    animation-delay: 0.3s;
+}
+
+.delay-3 {
+    animation-delay: 0.45s;
+}
+
+/* The background image very slowly zooms in, so the scene feels alive */
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.06);
+    }
+}
+
+.hero-img {
+    animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+/* Respect visitors who turn animations off in their system settings */
+@media (prefers-reduced-motion: reduce) {
+
+    .fade-up,
+    .hero-img {
+        animation: none;
+        opacity: 1;
+    }
+}
