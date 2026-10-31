@@ -494,7 +494,7 @@
 
         renderProjects(fallbackProjects);
 
-        fetch("http://localhost:5000/api/projects")
+        fetch("/api/projects")
             .then((res) => res.json())
             .then((list) => { if (Array.isArray(list) && list.length) renderProjects(list); })
             .catch(() => { });

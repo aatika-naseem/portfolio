@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aatika-naseem/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aatika-naseem/portfolio/issues"
+  },
+  "homepage": "https://github.com/aatika-naseem/portfolio#readme",
+  "dependencies": {
+    "mongoose": "^9.11.4",
+    "nodemailer": "^10.3.1"
+  }
+}
