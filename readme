@@ -1,0 +1,96 @@
+# Aatika Naseem | Developer Portfolio
+
+A full-stack, single-page portfolio website with a dark neon theme, scroll animations, a database-driven projects section and a working contact form.
+
+**Live site:** _add your Netlify link here_
+
+## Features
+
+- Responsive single-page layout with a mobile menu, scroll progress bar and active-link highlighting
+- Hero section with a typing effect and smooth entrance animations
+- Projects section loaded from MongoDB, with built-in fallback cards if the API is unreachable
+- Contact form that saves messages to MongoDB (optional email alerts)
+- Scroll-reveal animations that respect the `prefers-reduced-motion` setting
+
+## Tech stack
+
+| Part | Technology |
+|---|---|
+| Frontend | HTML, CSS, vanilla JavaScript, Tailwind CSS (CDN) |
+| Backend | Node.js, Netlify Functions (serverless) |
+| Database | MongoDB Atlas with Mongoose |
+| Email (optional) | Nodemailer |
+| Hosting | Netlify |
+
+## Project structure
+
+```
+portfolio/
+├── client/                  # The website (served as static files)
+│   ├── index.html
+│   └── images/
+├── netlify/
+│   ├── functions/
+│   │   ├── contact.js       # POST /api/contact
+│   │   └── projects.js      # GET/POST/DELETE /api/projects
+│   └── lib/
+│       └── db.js            # MongoDB connection and models
+├── server/                  # Original Express version of the API (local development)
+├── netlify.toml             # Publish folder, functions folder, /api redirects
+└── package.json
+```
+
+## API
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/projects` | List all projects |
+| POST | `/api/projects` | Add a project (requires the `x-admin-key` header) |
+| DELETE | `/api/projects?id=<id>` | Delete a project (requires the `x-admin-key` header) |
+| POST | `/api/contact` | Save a contact message (`name`, `email`, `message`) |
+
+## Run it locally
+
+1. Clone the repository and install dependencies:
+
+   ```bash
+   git clone https://github.com/aatika-naseem/portfolio.git
+   cd portfolio
+   npm install
+   ```
+
+2. Create a `.env` file in the project root:
+
+   ```
+   MONGO_URI=your-mongodb-connection-string
+   ```
+
+3. Start the site with its functions using the Netlify CLI:
+
+   ```bash
+   npx netlify dev
+   ```
+
+Opening `client/index.html` directly also works for the design, but the API routes only run through Netlify.
+
+## Environment variables
+
+| Name | Required | Purpose |
+|---|---|---|
+| `MONGO_URI` | Yes | MongoDB Atlas connection string |
+| `ADMIN_KEY` | Optional | Secret key for adding and deleting projects through the API |
+| `EMAIL_USER`, `EMAIL_PASS`, `EMAIL_TO` | Optional | Send an email alert for each new contact message |
+
+Never commit your `.env` file or any secrets.
+
+## Deployment
+
+1. Push the repository to GitHub.
+2. In Netlify, choose **Add new site**, then **Import an existing project**, and select this repository.
+3. Leave the build command empty. `netlify.toml` sets the publish and functions folders.
+4. Add the environment variables above under **Site configuration**.
+5. In MongoDB Atlas, allow network access from Netlify (Network Access).
+
+## About me
+
+I'm Aatika Naseem, a Software Engineering student at UET Lahore who builds websites and apps with HTML, CSS, JavaScript, Node.js and MongoDB. Get in touch through the contact form on the live site.
