@@ -225,6 +225,7 @@
 <body class="bg-bg text-white font-sans">
     <div id="progress"></div>
 
+    <!-- NAVBAR -->
     <header class="fixed top-0 left-0 w-full z-50 backdrop-blur bg-bg/60 border-b border-white/5">
         <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="#home" class="text-xl font-bold gradient-text">Aatika</a>
@@ -237,15 +238,17 @@
             </ul>
             <button id="menu-btn" class="md:hidden text-2xl" aria-label="Open menu">☰</button>
         </nav>
-        <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-muted bg-bg/95">
-            <li><a href="#home" class="block">Home</a></li>
-            <li><a href="#about" class="block">About</a></li>
-            <li><a href="#projects" class="block">Projects</a></li>
-            <li><a href="#services" class="block">Services</a></li>
-            <li><a href="#contact" class="block">Contact</a></li>
+        <ul id="mobile-menu"
+            class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-muted bg-bg/95 border-b border-white/5">
+            <li><a href="#home" class="block py-2 hover:text-white">Home</a></li>
+            <li><a href="#about" class="block py-2 hover:text-white">About</a></li>
+            <li><a href="#projects" class="block py-2 hover:text-white">Projects</a></li>
+            <li><a href="#services" class="block py-2 hover:text-white">Services</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-white">Contact</a></li>
         </ul>
     </header>
 
+    <!-- HERO -->
     <section id="home" class="relative min-h-screen flex items-end md:items-center overflow-hidden">
         <img src="images/hero.jpg" alt="Illustration of Aatika coding at her desk"
             class="hero-img absolute inset-0 w-full h-full object-cover object-[75%_center]" />
@@ -269,31 +272,44 @@
         </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="relative py-24 px-6 overflow-hidden">
         <div class="absolute top-20 -left-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none">
         </div>
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+
+            <!-- Image Column -->
             <div class="reveal flex justify-center md:justify-end relative group">
-                <div
-                    class="absolute inset-0 m-auto w-72 md:w-80 h-72 md:h-80 rounded-3xl bg-gradient-to-br from-accent/40 via-accent/10 to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500">
+                <div class="relative w-72 md:w-80">
+                    <!-- Glow ring behind image -->
+                    <div
+                        class="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/40 via-accent/10 to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500">
+                    </div>
+
+                    <!-- Decorative frame offset -->
+                    <div
+                        class="absolute inset-0 rounded-3xl border-2 border-accent/20 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-500">
+                    </div>
+
+                    <!-- Image -->
+                    <img src="images/about.jpg" alt="Illustration of Aatika standing confidently"
+                        class="relative w-full h-[28rem] rounded-3xl border-2 border-accent/50 glow object-cover object-top group-hover:scale-[1.02] transition-transform duration-500" />
                 </div>
-                <div
-                    class="absolute w-72 md:w-80 h-96 rounded-3xl border-2 border-accent/20 translate-x-4 translate-y-4 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-500">
-                </div>
-                <img src="images/about.jpg" alt="Illustration of Aatika standing confidently"
-                    class="relative w-72 md:w-80 h-96 rounded-3xl border-2 border-accent/50 glow object-cover group-hover:scale-[1.02] transition-transform duration-500" />
             </div>
 
+            <!-- Text Column -->
             <div class="reveal">
-                <p
-                    class="inline-flex items-center gap-2 text-accent font-semibold mb-3 text-sm uppercase tracking-wider">
-                    <span class="w-8 h-px bg-accent"></span> Who am I?
-                </p>
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold mb-6 text-xs uppercase tracking-wider">
+                    Who am I?
+                </span>
+
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                     I'm Aatika, a <span class="gradient-text">web and app developer</span>
                 </h2>
+
                 <p class="text-muted leading-relaxed mb-4 text-lg">
                     I'm a Software Engineering student at UET Lahore who builds clean,
                     responsive websites and apps. Before moving into software, I taught
@@ -304,6 +320,8 @@
                     I work with HTML, CSS, JavaScript, Node.js and MongoDB, and I enjoy
                     turning rough ideas into something polished that actually works.
                 </p>
+
+                <!-- Skill chips -->
                 <div class="flex flex-wrap gap-2 mb-8">
                     <span
                         class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">HTML</span>
@@ -316,6 +334,7 @@
                     <span
                         class="px-3 py-1.5 text-sm rounded-full border border-accent/30 bg-accent/5 text-accent font-medium">MongoDB</span>
                 </div>
+
                 <a href="#contact"
                     class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent hover:bg-accent/90 transition-all duration-300 glow font-semibold group/btn">
                     Let's work together
@@ -329,6 +348,7 @@
         </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="py-24 px-6 bg-surface/40">
         <div class="max-w-6xl mx-auto">
             <div class="reveal text-center mb-14">
@@ -339,6 +359,7 @@
         </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="py-24 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="reveal text-center mb-14">
@@ -370,6 +391,7 @@
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="py-24 px-6 bg-surface/40">
         <div class="max-w-2xl mx-auto">
             <div class="reveal text-center mb-10">
@@ -387,6 +409,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="py-8 text-center text-muted text-sm border-t border-white/5">
         © <span id="year"></span> Aatika Naseem. Built with HTML, Tailwind and Node.js.
     </footer>
